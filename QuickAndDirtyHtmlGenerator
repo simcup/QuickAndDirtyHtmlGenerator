@@ -1,23 +1,31 @@
 #Do not use anywhere near production. Software as is, do as you like
 
 class Element:
-	
+
 	def __init__(self, tag):
 		self.tag = tag
 		self.children = []
 		self.inner = ""
-		
+		self.attr = {}
+
+
+
 	def append(self, tag):
 		element = Element(tag)
 		self.children.append(element)
 		return element
-		
+
 	def render(self):
-		ret = "<"+self.tag+">"+self.inner
+		ret = "<"+self.tag+" "
+		ret += " ".join(str(x)+"=\""+str(self.attr[x])+"\"" for x in self.attr)
+		ret += ">"+self.inner
 		for child in self.children:
 			ret += child.render()
 		ret += "</"+self.tag+">"
 		return ret
-	
+
 	def text(self, text):
 		self.inner = text
+
+	def set(self, attr, value):
+		self.attr[attr] = value
