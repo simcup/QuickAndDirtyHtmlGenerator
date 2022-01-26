@@ -3,7 +3,8 @@
 this is a quick and dirty, hacked in 10 minutes html generator in python. 
 more specificly an Element class that
   
-  - just takes tags (n = Element("tag")), no attributes or whatever, 
+  - just takes tags (n = Element("tag")), ~~no attributes or whatever, ~~
+  - can have attributes (n.set("attribute", "value"))
   - can have inner stuff (n.text("stuff")) 
   - can have children Elements (m = n.append("tag")) 
   - which will be returned as string (n.render()). 
